@@ -11,3 +11,6 @@ Development version:
 devtools::install_github("mariuslarsson/touRism")
 ```
 
+## Usage
+
+SOON
