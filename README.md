@@ -2,7 +2,12 @@
 
 ## Installation
 
+Currently not on CRAN. ETA: summer 2019
+
+Development version:
+
 ```r 
-devtools::install_github()
+# install.packages("devtools")
+devtools::install_github("mariuslarsson/touRism")
 ```
 
