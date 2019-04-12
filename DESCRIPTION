@@ -1,0 +1,11 @@
+Package: touRism
+Type: Package
+Title: Tools for Analysis in Economics of Tourism
+Version: 0.0.1
+Authors@R: c(person("Marius", "Larsson", , "marius.runningen.larsson@nmbu.no", role = c("aut", "cre")))
+Description: Provide tools for analysis in economics of tourism
+    such as functions to estimate the gini coefficients, 
+    RME, gini correlation, etc. Rich example data from Norway.
+License: MIT
+Encoding: UTF-8
+LazyData: true
