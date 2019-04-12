@@ -3,7 +3,7 @@
 ## Installation
 
 Currently not on CRAN. ETA: summer 2019
-
+ 
 Development version:
 
 ```r 
