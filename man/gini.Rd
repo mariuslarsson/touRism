@@ -17,5 +17,7 @@ Gini coefficient estimated using the covariance approach
 See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 }
 \examples{
-#SOON
+
+x <- c(1:12)
+gini(x)
 }
