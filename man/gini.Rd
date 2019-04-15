@@ -13,7 +13,8 @@ gini(x)
 value between 0 and (n-1)/n
 }
 \description{
-Gini coefficient estimated using the covariance approach
+Gini coefficient estimated using the covariance approach, i.e.
+\deqn{G_y = \frac{2 cov (y,F(y))}{\mu_y}}.
 See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 }
 \examples{
