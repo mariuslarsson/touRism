@@ -1,6 +1,6 @@
 Package: touRism
 Type: Package
-Title: Tools for Analysis in Economics of Tourism
+Title: Tools for Analysis of Tourism Demand
 Version: 0.0.1
 Authors@R: c(person("Marius", "Larsson", "Runningen", email="marius.runningen.larsson@nmbu.no", role = c("aut", "cre")))
 Description: Provide tools for analysis in economics of tourism
