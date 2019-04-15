@@ -4,12 +4,12 @@
 \alias{giniCor}
 \title{Estimate the Gini correlation}
 \usage{
-giniCor(x1, x2)
+giniCor(y, x)
 }
 \arguments{
-\item{x1}{numeric vector}
+\item{y}{numeric vector}
 
-\item{x2}{numeric vector}
+\item{x}{numeric vector}
 }
 \value{
 value betweel -1 and 1

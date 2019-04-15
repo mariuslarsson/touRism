@@ -9,35 +9,45 @@
 #' @export
 #'
 #' @examples
-#' #SOON
+#'
+#' x <- c(1:12)
+#' gini(x)
 gini <- function(x){
+  #Gini coefficient estimated using the covariance approach
+  #See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 
+  if(!is.numeric(x)) stop("x is not numeric")
 
   x <- sort(x)
-  xmean <- mean(x)
-  LHS <- x-xmean
+  x_mean <- mean(x)
+  x_sub <- x-x_mean
 
   Fy <- Frank(x)
-  Fmean <- mean(Fy)
-  RHS <- sort(Fy)-Fmean
+  Fy_mean <- mean(Fy)
+  Fy_sub <- Fy-Fy_mean
   wi <- 1/length(x)
 
-  (2*sum(LHS*RHS)*wi)/xmean
+  gini <- (2*sum(x_sub*Fy_sub)*wi)/x_mean
+
+  return(gini)
 }
+
 
 #' Estimate the Gini correlation
 #'
-#' @param x1 numeric vector
-#' @param x2 numeric vector
+#' @param y numeric vector
+#' @param x numeric vector
 #'
 #' @return value betweel -1 and 1
 #' @export
 #'
 #' @examples
 #' #SOON
-giniCor <- function(x1,x2){
-  giniCov((x2), Frank(x1))/
-    giniCov((x2), Frank(x2))
+giniCor <- function(y,x){
+  gcor_x <- giniCov(x, Frank(y))/
+    giniCov(x, Frank(x))
+
+  return(gcor)
 }
 
 #' Estimate the RME
@@ -52,26 +62,30 @@ giniCor <- function(x1,x2){
 #'
 #' @examples
 #' #SOON
-RME <- function(y, x){
+giniRME <- function(y, x){
 
   S_x <- mean(x)/mean(y)
   gamma_xy <- giniCor(y, x)
   gini_x <- gini(x)
   gini_y <- gini(y)
 
-  RME_x <- S_x * gamma_xy * gini_x/gini_y - S_x
+  rme <- S_x * gamma_xy * gini_x/gini_y - S_x
 
-  return(RME_x)
+  return(rme)
 }
 
-giniCov <- function(x1, x2){
-  LHS <- x1 - mean(x1)
-  RHS <- x2 - mean(x2)
-  sum(LHS*RHS)*(1/length(x1))
+giniCov <- function(y, x){
+  y_sub <- y - mean(y)
+  x_sub <- x - mean(x)
+  gcov <- sum(y_sub*x_sub)*(1/length(y))
+
+  return(gcov)
 }
 
 
 Frank <- function(x){
-  #Empirical distribution function F(y)
-  rank(x)/length(x)
+
+  frank <- rank(x)/length(x)
+
+  return(frank)
 }
