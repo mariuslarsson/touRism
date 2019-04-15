@@ -27,9 +27,9 @@ gini <- function(x){
   Fy_sub <- Fy-Fy_mean
   wi <- 1/length(x)
 
-  gini <- (2*sum(x_sub*Fy_sub)*wi)/x_mean
+  G <- (2*sum(x_sub*Fy_sub)*wi)/x_mean
 
-  return(gini)
+  return(G)
 }
 
 
@@ -44,10 +44,10 @@ gini <- function(x){
 #' @examples
 #' #SOON
 giniCor <- function(y,x){
-  gcor_x <- giniCov(x, Frank(y))/
+  gamma <- giniCov(x, Frank(y))/
     giniCov(x, Frank(x))
 
-  return(gcor)
+  return(gamma)
 }
 
 #' Estimate the RME
@@ -69,9 +69,9 @@ giniRME <- function(y, x){
   gini_x <- gini(x)
   gini_y <- gini(y)
 
-  rme <- S_x * gamma_xy * gini_x/gini_y - S_x
+  RME <- S_x * gamma_xy * gini_x/gini_y - S_x
 
-  return(rme)
+  return(RME)
 }
 
 giniCov <- function(y, x){
@@ -85,7 +85,7 @@ giniCov <- function(y, x){
 
 Frank <- function(x){
 
-  frank <- rank(x)/length(x)
+  Fx <- rank(x)/length(x)
 
-  return(frank)
+  return(Fx)
 }
