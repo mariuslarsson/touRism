@@ -18,5 +18,9 @@ value betweel -1 and 1
 Estimate the Gini correlation
 }
 \examples{
-#SOON
+x1 <- c(0,0,1,1,1,1.2,1.2,1.2,1,1,1,0)
+x2 <- c(0.4,0.4,0.4,0,0,0,0,0,0,0,0,0.4)
+y <- x1+x2
+
+giniCor(y, x1)
 }

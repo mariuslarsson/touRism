@@ -18,5 +18,9 @@ numeric
 RME measures the marginal effect each G_k has on G_y where sum k = 1 to n (G_k) = G_y
 }
 \examples{
-#SOON
+x1 <- c(0,0,1,1,1,1.2,1.2,1.2,1,1,1,0)
+x2 <- c(0.4,0.4,0.4,0,0,0,0,0,0,0,0,0.4)
+y <- x1+x2
+
+giniCor(y, x1)
 }
