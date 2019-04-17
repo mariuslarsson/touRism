@@ -14,8 +14,7 @@
 #' x <- c(1:12)
 #' gini(x)
 gini <- function(x){
-  #Gini coefficient estimated using the covariance approach
-  #See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
+
 
   if(!is.numeric(x)) stop("x is not numeric")
 
@@ -43,7 +42,11 @@ gini <- function(x){
 #' @export
 #'
 #' @examples
-#' #SOON
+#' x1 <- c(0,0,1,1,1,1.2,1.2,1.2,1,1,1,0)
+#' x2 <- c(0.4,0.4,0.4,0,0,0,0,0,0,0,0,0.4)
+#' y <- x1+x2
+#'
+#' giniCor(y, x1)
 giniCor <- function(y,x){
   gamma <- giniCov(x, Frank(y))/
     giniCov(x, Frank(x))
@@ -62,7 +65,11 @@ giniCor <- function(y,x){
 #' @export
 #'
 #' @examples
-#' #SOON
+#' x1 <- c(0,0,1,1,1,1.2,1.2,1.2,1,1,1,0)
+#' x2 <- c(0.4,0.4,0.4,0,0,0,0,0,0,0,0,0.4)
+#' y <- x1+x2
+#'
+#' giniCor(y, x1)
 giniRME <- function(y, x){
 
   S_x <- mean(x)/mean(y)
