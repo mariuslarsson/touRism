@@ -20,14 +20,14 @@ gini <- function(x){
 
   x <- sort(x)
   x_mean <- mean(x)
-  x_sub <- x-x_mean
+  x_diff <- x-x_mean
 
   Fy <- Frank(x)
   Fy_mean <- mean(Fy)
-  Fy_sub <- Fy-Fy_mean
+  Fy_diff <- Fy-Fy_mean
   wi <- 1/length(x)
 
-  G <- (2*sum(x_sub*Fy_sub)*wi)/x_mean
+  G <- (2*sum(x_diff*Fy_diff)*wi)/x_mean
 
   return(G)
 }
@@ -83,9 +83,9 @@ giniRME <- function(y, x){
 }
 
 giniCov <- function(y, x){
-  y_sub <- y - mean(y)
-  x_sub <- x - mean(x)
-  gcov <- sum(y_sub*x_sub)*(1/length(y))
+  y_diff <- y - mean(y)
+  x_diff <- x - mean(x)
+  gcov <- sum(y_diff*x_diff)*(1/length(y))
 
   return(gcov)
 }
