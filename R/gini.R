@@ -5,6 +5,7 @@
 #' See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 #'
 #' @param x numeric vector
+#' @param suppressWarning logical. Set \code{TRUE} to hide \code{length(x) != 12} warning
 #'
 #' @return value between 0 and (n-1)/n
 #' @export
@@ -13,10 +14,14 @@
 #'
 #' x <- c(1:12)
 #' gini(x)
-gini <- function(x){
+gini <- function(x, suppressWarning = FALSE){
 
-
+  #Error handling:
   if(!is.numeric(x)) stop("x is not numeric")
+
+  if(!suppressWarning){
+    if(length(x) != 12) warning("length of x is different than the number of months in a year")
+  }
 
   x <- sort(x)
   x_mean <- mean(x)

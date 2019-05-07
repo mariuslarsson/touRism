@@ -4,10 +4,12 @@
 \alias{gini}
 \title{Estimate the Gini Coefficient}
 \usage{
-gini(x)
+gini(x, suppressWarning = FALSE)
 }
 \arguments{
 \item{x}{numeric vector}
+
+\item{suppressWarning}{logical. Set \code{TRUE} to hide \code{length(x) != 12} warning}
 }
 \value{
 value between 0 and (n-1)/n
