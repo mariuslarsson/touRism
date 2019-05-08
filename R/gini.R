@@ -20,7 +20,7 @@ gini <- function(x, suppressWarning = FALSE){
   if(!is.numeric(x)) stop("x is not numeric")
 
   if(!suppressWarning){
-    if(length(x) != 12) warning("length of x is different than the number of months in a year")
+    if(length(x) != 12) warning("length of x is not equal to the number of months in a year")
   }
 
   x <- sort(x)
@@ -53,6 +53,12 @@ gini <- function(x, suppressWarning = FALSE){
 #'
 #' giniCor(y, x1)
 giniCor <- function(y,x){
+
+  #Error handling:
+  if(!is.numeric(x) | !is.numeric(y)) stop("x and/or y is not numeric")
+
+  #Equal length requirement of x and y is handled by giniCov()
+
   gamma <- giniCov(x, Frank(y))/
     giniCov(x, Frank(x))
 
@@ -82,17 +88,21 @@ giniRME <- function(y, x){
   gini_x <- gini(x)
   gini_y <- gini(y)
 
-  RME <- S_x * gamma_xy * gini_x/gini_y - S_x
+  GRME <- S_x * gamma_xy * gini_x/gini_y - S_x
 
-  return(RME)
+  return(GRME)
 }
 
 giniCov <- function(y, x){
+
+  #Error handling:
+  if(length(y) != length(x)) stop("length of x and y must be equal")
+
   y_diff <- y - mean(y)
   x_diff <- x - mean(x)
-  gcov <- sum(y_diff*x_diff)*(1/length(y))
+  Gcov <- sum(y_diff*x_diff)*(1/length(y))
 
-  return(gcov)
+  return(Gcov)
 }
 
 
