@@ -16,3 +16,7 @@ devtools::install_github("mariuslarsson/touRism")
 ## Usage
 
 SOON
+
+## Contact
+
+marius.larsson@gmail.com
