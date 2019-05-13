@@ -19,6 +19,9 @@ Gini coefficient estimated using the covariance approach, i.e.
 \deqn{G_y = \frac{2 cov (y,F(y))}{\mu_y}}.
 See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 }
+\details{
+Currently returns 0 if x is only zeroes.
+}
 \examples{
 
 x <- c(1:12)
