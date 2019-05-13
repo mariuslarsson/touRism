@@ -4,6 +4,8 @@
 #' \deqn{G_y = \frac{2 cov (y,F(y))}{\mu_y}}.
 #' See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
 #'
+#' Currently returns 0 if x is only zeroes.
+#'
 #' @param x numeric vector
 #' @param suppressWarning logical. Set \code{TRUE} to hide \code{length(x) != 12} warning
 #'
@@ -21,6 +23,10 @@ gini <- function(x, suppressWarning = FALSE){
 
   if(!suppressWarning){
     if(length(x) != 12) warning("length of x is not equal to the number of months in a year")
+  }
+
+  if(sum(x)==0){
+    return(0)
   }
 
   x <- sort(x)
