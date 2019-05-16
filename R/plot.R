@@ -7,7 +7,7 @@
 #' @examples
 #'  ggplot2::ggplot(data.frame(x=rep(c(1, 2, 3, 4, 5), 2), y=1:10, d=rep(c("a", "b"), 5)), ggplot2::aes(x=x, y=y, fill=d))+
 #'   ggplot2::geom_bar(stat="identity", position="dodge")+
-#'   themehemeEmpty()
+#'   themeEmpty()
 themeEmpty <- function(){
 
   theme_gray() %+replace% {
