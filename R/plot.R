@@ -43,6 +43,7 @@ themeEmpty <- function(){
 #' @param df input data.frame containg place, revpar and change in decimals.
 #' @param outputReady Logical. If TRUE, uses device size and is better suited for ouputs. Default is FALSE - fixed aspect ration.
 #' @param customFont Logical. If TRUE, use the font family Montserrat (if available). Default is 'sans'
+#' @param header Vector. Set header above columns. Takes a vector of length 3 with strings.
 #'
 #' @return ggplot object
 #' @export
@@ -54,14 +55,26 @@ themeEmpty <- function(){
 #'                            Endring = c(0.153, 0.137, 0.036, 0.014, 0.008, -0.005, -0.029, -0.054, -0.074, -0.082, -0.179))
 #'
 #' ggnewsPlot(exampleFrame)
-ggnewsPlot <-  function(df, outputReady = FALSE, customFont = FALSE){
+ggnewsPlot <-  function(df, outputReady = FALSE, customFont = FALSE,
+                        header = c("City", "RevPAR", "Change from same period last year")){
 
 
-  normalizeCustom <- function(x){
-    newMin <- -1.3
-    newMax <- 1.3
+  #Error handling:
 
-    (newMax-newMin) * (x-min(x))/(max(x)-min(x))+newMin
+  if(length(header) != 3) stop("header must be of length 3. For no header, set empty entries in vector")
+
+  normZ <- function(x){
+
+    noSign <- x >= 0
+
+    newMin <- min(abs(x))
+    newMax <- 1
+    x <- abs(x)
+    scaledNums <- (newMax-newMin) * (x-min(x))/(max(x)-min(x))+newMin
+
+    scaledNums[!noSign] <- -1*scaledNums[!noSign]
+
+    scaledNums
 
   }
 
@@ -73,7 +86,7 @@ ggnewsPlot <-  function(df, outputReady = FALSE, customFont = FALSE){
            xplace3 = 2.6,
            xplaceBar = 4,
            #TODO: Ad hoc løsning på scaling for bars. Undersøk mer
-           normChange = ifelse(Endring <0, -1*abs(normalizeCustom(Endring)), abs(normalizeCustom(Endring))),
+           normChange = ifelse(normZ(Endring)>0, normZ(Endring)+0.025, normZ(Endring)-0.025),
            segmentEnd = normChange+4,
            segmentCols = (ifelse(Endring > 0, "opp", "ned"))) %>%
     mutate(EndringOut = paste0(100*Endring, "%"))
@@ -87,8 +100,10 @@ ggnewsPlot <-  function(df, outputReady = FALSE, customFont = FALSE){
   }
 
   ggOut <- ggplot(df, aes(x=xplace1, y=yplace, label = Sted))+
+    ylim(0, (max(df$yplace)+1)*1.1)+
     xlim(0,xMax)+
     geom_text(hjust=0, family = fontFam)+
+    annotate("text", x=c(0, 1.5, 2), y=max(df$yplace)+yAdjust*2, label = header, hjust=c(0, 0.5, 0), family = fontFam, fontface="bold")+
     geom_rect(aes(xmin=2, ymin=1-0.5, xmax=max(df$segmentEnd), ymax=max(df$yplace)+yAdjust), fill=adjustcolor("turquoise", 0.03), inherit.aes = FALSE)+
     geom_text(aes(x=xplace2, y=yplace, label=RevPAR), fontface="bold", family = fontFam)+
     geom_text(aes(x=xplace3, y=yplace, label=EndringOut), hjust=1, family = fontFam)+

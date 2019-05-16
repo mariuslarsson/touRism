@@ -4,7 +4,8 @@
 \alias{ggnewsPlot}
 \title{Replicates DN's RevPAR figure in ggplot2}
 \usage{
-ggnewsPlot(df, outputReady = FALSE, customFont = FALSE)
+ggnewsPlot(df, outputReady = FALSE, customFont = FALSE,
+  header = c("City", "RevPAR", "Change from same period last year"))
 }
 \arguments{
 \item{df}{input data.frame containg place, revpar and change in decimals.}
@@ -12,6 +13,8 @@ ggnewsPlot(df, outputReady = FALSE, customFont = FALSE)
 \item{outputReady}{Logical. If TRUE, uses device size and is better suited for ouputs. Default is FALSE - fixed aspect ration.}
 
 \item{customFont}{Logical. If TRUE, use the font family Montserrat (if available). Default is 'sans'}
+
+\item{header}{Vector. Set header above columns. Takes a vector of length 3 with strings.}
 }
 \value{
 ggplot object
