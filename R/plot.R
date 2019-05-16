@@ -38,7 +38,7 @@ themeEmpty <- function(){
 #' The function generates a figure often used by Dagens Næringsliv (DN), a Norwegian newspaper specializing in business news,
 #' to present data on RevPAR and changes in RevPAR for diferent regions/cities.
 #'
-#' This function is early developement. Expect revisions.
+#' This function is early development. Expect revisions.
 #'
 #' @param df input data.frame containg place, revpar and change in decimals.
 #' @param outputReady Logical. If TRUE, uses device size and is better suited for ouputs. Default is FALSE - fixed aspect ration.

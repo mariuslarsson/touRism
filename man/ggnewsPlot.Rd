@@ -21,7 +21,7 @@ The function generates a figure often used by Dagens Næringsliv (DN), a Norwegi
 to present data on RevPAR and changes in RevPAR for diferent regions/cities.
 }
 \details{
-This function is early developement. Expect revisions.
+This function is early development. Expect revisions.
 }
 \examples{
 
