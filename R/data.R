@@ -10,3 +10,18 @@
 #' }
 #' @source \url{https://www.kystverket.no/safeseanet}
 "tromso"
+
+#' Guest nights Norway 2018
+#'
+#' Guest nights in Norway for the year 2018 by county
+#'
+#'
+#' @format A data frame with 12 rows and 20 variables:
+#' \describe{
+#'   \item{month}{Month of observation}
+#'   \item{LOCATIONS}{Counties in Norway}
+#'   \item{...}{...}
+#' }
+#' @source \url{https://www.ssb.no/}
+"norwayGuestNights2018"
+
