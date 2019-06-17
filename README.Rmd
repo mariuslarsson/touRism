@@ -19,7 +19,7 @@ devtools::install_github("mariuslarsson/touRism")
 
 ## Usage
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(touRism)
 library(dplyr)
 library(tidyr)

@@ -21,20 +21,6 @@ devtools::install_github("mariuslarsson/touRism")
 ``` r
 library(touRism)
 library(dplyr)
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
 library(tidyr)
 
 data(norwayGuestNights2018)
