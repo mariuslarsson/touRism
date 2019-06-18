@@ -27,7 +27,7 @@ data(norwayGuestNights2018)
 #?norwayGuestNights2018
 
 norwayGuestNights2018 %>% 
-  dplyr::mutate(Norway=rowSums(select_if(., is.numeric))) %>% 
+  dplyr::mutate(Norway=rowSums(dplyr::select_if(., is.numeric))) %>% 
   tidyr::gather(county, value, -month, -Norway) %>%
   dplyr::group_by(county) %>% 
   dplyr::summarise(gini = touRism::gini(value),
