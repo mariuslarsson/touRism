@@ -2,7 +2,7 @@
 #'
 #' Gini coefficient estimated using the covariance approach, i.e.
 #' \deqn{G_y = \frac{2 cov (y,F(y))}{\mu_y}}.
-#' See Lerman and Yitzaki (1989) and A. Fernandez-Morales et al. (2016)
+#' See Lerman and Yitzaki (1985), Podder (1993) and A. Fernandez-Morales et al. (2016)
 #'
 #' Currently returns 0 if x is only zeroes.
 #'
@@ -93,6 +93,8 @@ giniRME <- function(y, x){
   gamma_xy <- giniCor(y, x)
   gini_x <- gini(x)
   gini_y <- gini(y)
+
+  #C_x = S_x * gamma_xy as per Podder (1993)
 
   GRME <- S_x * gamma_xy * gini_x/gini_y - S_x
 
