@@ -7,7 +7,7 @@ decomposition methods.
 
 ## Installation
 
-Currently not on CRAN. ETA: summer 2019
+Currently not on CRAN. 
 
 Development version:
 
