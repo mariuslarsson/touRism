@@ -3,4 +3,5 @@
 export(ggnewsPlot)
 export(gini)
 export(giniCor)
+export(giniMonths)
 export(giniRME)
