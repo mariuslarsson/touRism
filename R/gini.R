@@ -120,3 +120,25 @@ Frank <- function(x){
 
   return(Fx)
 }
+
+
+#' Calculate months equivalent degree of tourism seasonality
+#'
+#' \deqn{12 \times (1-G_y)}
+#' See Sitouras (2004).
+#'
+#' @param gini numeric value between 0 and (n-1)/n
+#'
+#' @return numeric value between 0 and 12
+#' @export
+#'
+#' @examples
+#'
+#' x <- c(1:12)
+#' giniMonths(gini(x))
+giniMonths <- function(gini){
+
+  n <- 12*(1-gini)
+
+  return(n)
+}
