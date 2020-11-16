@@ -86,7 +86,7 @@ giniCor <- function(y,x){
 #' x2 <- c(0.4,0.4,0.4,0,0,0,0,0,0,0,0,0.4)
 #' y <- x1+x2
 #'
-#' giniCor(y, x1)
+#' giniRME(y, x1)
 giniRME <- function(y, x){
 
   S_x <- mean(x)/mean(y)
