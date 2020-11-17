@@ -29,7 +29,8 @@ gini <- function(x, suppressWarning = FALSE){
     return(0)
   }
 
-  x <- sort(x)
+  #Sort not needed.
+  #x <- sort(x)
   x_mean <- mean(x)
   x_diff <- x-x_mean
 
@@ -38,9 +39,16 @@ gini <- function(x, suppressWarning = FALSE){
   Fy_diff <- Fy-Fy_mean
   wi <- 1/length(x)
 
-  G <- (2*sum(x_diff*Fy_diff)*wi)/x_mean
+  COVyFy <- sum(x_diff*Fy_diff)*wi
+
+  G <- (2*COVyFy)/x_mean
 
   return(G)
+}
+
+simplifiedGini <- function(x){
+  wi <- 1/length(x)
+  2*cov(x, Frank(x))*(1-wi)/(mean(x))
 }
 
 
