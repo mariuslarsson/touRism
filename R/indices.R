@@ -6,6 +6,7 @@
 #' @param exchangerates tibble with monthly exchange rates where each row is a month and each column is the exchange rate of a currency. The column names of the currencies must be equal to those of the weights column names. In addition, a coulmn with months must be included, named date_start.
 #'
 #' @return tibble with dates and index
+#' @export
 #'
 #' @examples
 #'
