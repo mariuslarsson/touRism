@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' #Soon
+#' chainedLaspeyres(laspeyresWeights, laspeyresCurrencies)
 chainedLaspeyres <- function(weights, exchangerates){
 
 

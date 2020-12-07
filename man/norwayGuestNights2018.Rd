@@ -11,7 +11,7 @@
   \item{...}{...}
 }}
 \source{
-\url{https://www.ssb.no/}
+\url{https://www.ssb.no}
 }
 \usage{
 norwayGuestNights2018
