@@ -14,13 +14,15 @@
 chainedLaspeyres <- function(weights, exchangerates){
 
 
-
+  #As the chained laspeyres index uses the previous year weights against the
+  #current exchange rates, we facilitate for this by lagging the weights to its
+  #previous year to later join by (to finally group_by) the year column
   laggedWeights <- weights %>%
     mutate_at(vars(-year), function(x) dplyr::lag(x)) %>%
     filter(year != min(year)) %>%
     mutate(year = as.character(year))
 
-
+  #Generate year column if not already present in the data
   exchangeratesYear <- exchangerates %>%
     mutate(year = format(as.Date(date_start), "%Y"))
 
@@ -33,15 +35,16 @@ chainedLaspeyres <- function(weights, exchangerates){
     paste0("*100")
 
 
+
   joinedWeightsExchangerates <- exchangeratesYear %>%
     pivot_longer(-c(date_start, year),values_to = "currencies") %>%
     left_join(laggedWeights %>%
-                pivot_longer(-c(year),values_to = "weights"), by=c("year", "name")) #%>%
-  #mutate(weights = ifelse(is.na(weights), 0, weights))
+                pivot_longer(-c(year),values_to = "weights"), by=c("year", "name"))
+
 
   uniqueDates <- unique(joinedWeightsExchangerates$date_start)
   numUniqueGroups <- ceiling(length(uniqueDates)/12)
-  uniqueGroups <- sort(rep(paste0("group", 1:numUniqueGroups), 12))[seq_along(uniqueDates)]
+  uniqueGroups <- paste0("group", sort(rep(1:numUniqueGroups, 12)))[seq_along(uniqueDates)]
   firstMonth <- format(min(joinedWeightsExchangerates$date_start), "%m")
 
   dualTempYearlyIndecies <- joinedWeightsExchangerates %>%
@@ -137,3 +140,5 @@ chainedLaspeyres <- function(weights, exchangerates){
   return(outputIndex)
 
 }
+
+
