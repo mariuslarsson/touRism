@@ -141,4 +141,23 @@ chainedLaspeyres <- function(weights, exchangerates){
 
 }
 
-
+#' Test indices updated function
+#' Cletus C. Coughlin , Patricia S. Pollard & Jerram C. Betts (1998) To chain
+#' or not to chain trade-weighted exchange rate indexes,
+# exchangerates <- data.frame(bb = c(25, 32, 39, 49, 61, 61, 65, 68, 72, 75, 78, 80, 82, 85),
+#            cc = c(55, 50, 48, 45, 39, 39, 36, 28, 25, 22, 17, 16, 15, 13))
+# bbweights = c(60, 62, 64, 66, 68, 69, 70, 68, 65, 60, 50, 45, 42, 40)/100
+# tradeweights <- data.frame(bb=bbweights,
+#                            cc=1-bbweights)
+#
+#
+# baseweight <- 12
+# baseperiodbb <- exchangerates[1,"bb"]
+# baseperiodcc <- exchangerates[1,"cc"]
+# ((((exchangerates[,"bb"]/baseperiodbb)^tradeweights[baseweight,"bb"])*
+# ((exchangerates[,"cc"]/baseperiodcc)^tradeweights[baseweight,"cc"]))*100 ) %>% plot(type='l')
+# 1:100 %>% plot()
+# lli <- function(data){
+#   x <- 1
+#   x+x+data
+# }
