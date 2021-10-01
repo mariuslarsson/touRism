@@ -3,7 +3,7 @@
 
 This R package provides tools for analysis of tourism demand, especially
 the analysis of seasonal concentration on tourism demand using
-decomposition methods.
+decomposition methods. Also methods for creating trade weighted exchange indices.
 
 ## Installation
 
